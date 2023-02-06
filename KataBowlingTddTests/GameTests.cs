@@ -129,8 +129,8 @@ namespace KataBowlingTddTests
             _game.Roll(3);
             _game.Roll(2);
 
-            Assert.That(_game.FrameScore(1), Is.EqualTo(13));
             Assert.That(_game.Score, Is.EqualTo(18));
+            Assert.That(_game.FrameScore(1), Is.EqualTo(13));
         }
     }
 }

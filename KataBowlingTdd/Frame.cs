@@ -15,21 +15,22 @@ namespace KataBowlingTdd
         {
             int result = 0;
             int ball = 0;
-            int bothBall = 0;
+            int beideBallProWurf = 0;
 
             for (int i = 0; i < actualWurf; i++)
             {
-                int firstBall = wurfen[ball++];
-                int secondBall = wurfen[ball++];
-                bothBall = firstBall + secondBall;
+                //no strike no spare
+                int ersteBall = wurfen[ball];
+                int zweiteBall = wurfen[ball++];
+                beideBallProWurf = ersteBall + zweiteBall;
 
+                //spare
                 if (wurfen[actualWurf] + wurfen[actualWurf + 1] == 10)
                 {
-                    result += bothBall + wurfen[ball];
-                    return result;
+                    return beideBallProWurf + wurfen[ball];
                 }
             }
-            return bothBall;
+            return beideBallProWurf;
         }
     }
 }

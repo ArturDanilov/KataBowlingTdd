@@ -11,9 +11,8 @@ namespace KataBowlingTdd
         public const int maxScore = 300;
         public const int minScore = 0;
 
-        Frame frame = new Frame();
         private int[] wurfen = new int[21];
-        private int actualWurf = 0;
+        private int actuelWurf = 0;
 
         private int totalScore = 0;
         public int Score
@@ -31,9 +30,10 @@ namespace KataBowlingTdd
             if (pins < minScore)
                 throw new ArgumentException("Die minimale Punktezahl ist 0!");
 
+            //punkte ingesamt
             Score += pins;
 
-            wurfen[actualWurf++] = pins;
+            wurfen[actuelWurf++] = pins;
             var sum = wurfen.Sum();
 
             return sum;
@@ -41,23 +41,23 @@ namespace KataBowlingTdd
 
         public int FrameScore(int actualWurf)
         {
-            int result = 0;
             int ball = 0;
-            int bothBall = 0;
+            int beideBallProWurf = 0;
 
             for (int i = 0; i < actualWurf; i++)
             {
-                int firstBall = wurfen[ball++];
-                int secondBall = wurfen[ball++];
-                bothBall = firstBall + secondBall;
+                //no strike no spare
+                int ersteBall = wurfen[ball++];
+                int zweiteBall = wurfen[ball++];
+                beideBallProWurf = ersteBall + zweiteBall;
 
+                //spare
                 if (wurfen[actualWurf] + wurfen[actualWurf + 1] == 10)
-                {
-                    result += bothBall + wurfen[ball];
-                    return result;
+                {                    
+                    return beideBallProWurf += wurfen[ball];
                 }
             }
-            return bothBall;
+            return beideBallProWurf;
         }
     }
 }
