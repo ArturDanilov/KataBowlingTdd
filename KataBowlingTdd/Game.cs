@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,50 +15,57 @@ namespace KataBowlingTdd
         private int[] wurfen = new int[21];
         private int actuelWurf = 0;
 
-        private int totalScore = 0;
-        public int Score
-        {
-            get => totalScore;
-            set => totalScore = value;
-        }
+        private int score = 0;
+        public bool firstFrame = false;
 
-        public int Roll(int pins)
-        {
+        public int Score { get => score; set => score = value; }
+        //public int ActualFrame { get { return actualFrame; } }
 
+        public int AddRoll(int pins)
+        {
             if (pins > maxScore)
                 throw new ArgumentException("Die höchste Punktezahl ist 300!");
-
             if (pins < minScore)
                 throw new ArgumentException("Die minimale Punktezahl ist 0!");
 
             //punkte ingesamt
-            Score += pins;
-
             wurfen[actuelWurf++] = pins;
-            var sum = wurfen.Sum();
 
+            //TODO to frame
+            Score += pins;
+            var sum = wurfen.Sum();
             return sum;
         }
 
-        public int FrameScore(int actualWurf)
+        public int ActualWurf
+        {
+            get { return 1; }
+        }
+
+        //punkte, spare, strike
+        public int Frame(int frame)
         {
             int ball = 0;
-            int beideBallProWurf = 0;
+            int punkteIngesamt = 0;
 
-            for (int i = 0; i < actualWurf; i++)
+            for (int i = 0; i < frame; i++)
             {
                 //no strike no spare
                 int ersteBall = wurfen[ball++];
                 int zweiteBall = wurfen[ball++];
-                beideBallProWurf = ersteBall + zweiteBall;
+                int punktePro2Wurfe = ersteBall + zweiteBall;
 
                 //spare
-                if (wurfen[actualWurf] + wurfen[actualWurf + 1] == 10)
+                if (punktePro2Wurfe == 10)
                 {                    
-                    return beideBallProWurf += wurfen[ball];
+                    punkteIngesamt += punktePro2Wurfe + wurfen[ball];
+                }
+                else
+                {
+                    punkteIngesamt += punktePro2Wurfe;
                 }
             }
-            return beideBallProWurf;
+            return punkteIngesamt;
         }
     }
 }

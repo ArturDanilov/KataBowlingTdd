@@ -8,29 +8,32 @@ namespace KataBowlingTdd
 {
     public class Frame
     {
-        private int[] wurfen = new int[21];
-        private int actualWurf = 0;
+        //private int[] wurfen = new int[21];
+        //private int actualWurf = 0;
 
-        public int FrameScore(int actualWurf)
-        {
-            int result = 0;
-            int ball = 0;
-            int beideBallProWurf = 0;
+        //public int Frame2(int frame)
+        //{
+        //    int ball = 0;
+        //    int punkteIngesamt = 0;
 
-            for (int i = 0; i < actualWurf; i++)
-            {
-                //no strike no spare
-                int ersteBall = wurfen[ball];
-                int zweiteBall = wurfen[ball++];
-                beideBallProWurf = ersteBall + zweiteBall;
+        //    for (int i = 0; i < frame; i++)
+        //    {
+        //        //no strike no spare
+        //        int ersteBall = wurfen[ball++];
+        //        int zweiteBall = wurfen[ball++];
+        //        int punktePro2Wurfe = ersteBall + zweiteBall;
 
-                //spare
-                if (wurfen[actualWurf] + wurfen[actualWurf + 1] == 10)
-                {
-                    return beideBallProWurf + wurfen[ball];
-                }
-            }
-            return beideBallProWurf;
-        }
+        //        //spare
+        //        if (punktePro2Wurfe == 10)
+        //        {
+        //            punkteIngesamt += punktePro2Wurfe + wurfen[ball];
+        //        }
+        //        else
+        //        {
+        //            punkteIngesamt += punktePro2Wurfe;
+        //        }
+        //    }
+        //    return punkteIngesamt;
+        //}
     }
 }
