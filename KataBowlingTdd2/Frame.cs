@@ -4,6 +4,18 @@
     {
         public int[] PinsRolled;
 
-        public int Score; // Punktzahl nur dieses Frame
+        public int Score
+        {
+            get
+            {
+                int score = 0;
+
+                foreach (int pin in PinsRolled)
+                {
+                    score += pin;
+                }
+                return score;
+            }
+        }
     }
 }

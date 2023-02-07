@@ -28,19 +28,7 @@ namespace KataBowlingTdd2Tests
 
             //Assert
             Assert.AreEqual(pins, _game.TotalScore());
+            Assert.AreEqual(pins, _game.Frames);
         }
-
-        //[Test]
-        //public void AddRoll_Eingabe1_ReturnPinsFramesCount1()
-        //{
-        //    //Arrange
-        //    int pins = 1;
-        //    int expectedFramesCount = 1;
-        //    //Act
-        //    _game.AddRoll(pins);
-
-        //    //Assert
-        //    Assert.AreEqual(_game.Frames().Count(), expectedFramesCount);
-        //}
     }
 }
